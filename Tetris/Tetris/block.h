@@ -1,6 +1,5 @@
 #pragma once
-#include <stdlib.h>
-#include <time.h>
+
 #include "main_board.h"
 
 class block:public main_board
@@ -14,5 +13,6 @@ public:
 	~block();
 	void createBlock();
 	void showBlock();
+	void removeBlock();
 };
 

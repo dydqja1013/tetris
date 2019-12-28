@@ -4,7 +4,8 @@
 #include<iostream>
 using namespace std;
 
-
+int main_board::cursor_x = 3;
+int main_board::cursor_y = 0;
 
 main_board::main_board() {
 	this->cursor_x = 0;
@@ -36,10 +37,12 @@ void main_board::block_created() {
 	this->block_falling = true;
 	block *Pblock = new block();
 	Pblock->createBlock();
-	//while (1) {
-		Sleep(1000);
+	while (1) {
+		Sleep(500);
+		Pblock->removeBlock();
+		set_cursor(get_cursur_x(), get_cursur_y() + 1);
 		Pblock->showBlock();
-	//}
+	}
 }
 
 void main_board::set_cursor(int x, int y) {
@@ -50,6 +53,14 @@ void main_board::set_cursor(int x, int y) {
 	Cur.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
 }
+
+void main_board::set_cursor_onlyconsole(int x, int y) {
+	COORD Cur;
+	Cur.X = x * 2;
+	Cur.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Cur);
+}
+
 
 int main_board::get_cursur_x() {
 	return this->cursor_x;

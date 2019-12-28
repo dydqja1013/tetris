@@ -8,8 +8,8 @@
 class main_board {
 private:
 	bool blo[MAIN_Y][MAIN_X];
-	int cursor_x;
-	int cursor_y;
+	static int cursor_x;
+	static int cursor_y;
 	bool block_falling; //블럭이 내려가고있는지
 public:
 	main_board();
@@ -18,6 +18,7 @@ public:
 	bool is_block_falling();
 	void block_created();
 	void set_cursor(int, int);
+	void set_cursor_onlyconsole(int, int);
 	int get_cursur_x();
 	int get_cursur_y();
 };

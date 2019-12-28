@@ -1,5 +1,7 @@
 #include "block.h"
 #include<iostream>
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 bool block_shape[7][4][4][4] = //[모양][각도][y][x]
 {
@@ -214,7 +216,8 @@ block::~block()
 
 void block::createBlock()
 {
-	this->new_block_shape = 1; //랜덤으로 바꿔야함
+	srand(time(0));
+	this->new_block_shape = rand()%7; //랜덤으로 바꿔야함
 	cursor_clr();
 }
 
@@ -222,19 +225,44 @@ void block::showBlock()
 {
 	int x = get_cursur_x();
 	int y = get_cursur_y();
+
+	int cy = y;
 	set_cursor(x, y);
 	for (int i = 0; i < 4; i++)
 	{
 		int cx = x;
-		set_cursor(x, y);
+		set_cursor_onlyconsole(x, y); //x커서 초기화
 		for (int j = 0; j < 4; j++)
 		{
 			if (block_shape[this->new_block_shape][this->new_block_turn][i][j] == 1) {
 				cout << "■";
 			}
 			cx++;
-			set_cursor(cx, y);
+			set_cursor_onlyconsole(cx, y);  //x커서 한칸 오른쪽
 		}
-		set_cursor(cx, ++y);
+		set_cursor_onlyconsole(cx, ++y); //y커서 한칸 내리기
+	}
+}
+
+void block::removeBlock()
+{
+	int x = get_cursur_x();
+	int y = get_cursur_y();
+
+	int cy = y;
+	set_cursor(x, y);
+	for (int i = 0; i < 4; i++)
+	{
+		int cx = x;
+		set_cursor_onlyconsole(x, y); //x커서 초기화
+		for (int j = 0; j < 4; j++)
+		{
+			if (block_shape[this->new_block_shape][this->new_block_turn][i][j] == 1) {
+				cout << "□";
+			}
+			cx++;
+			set_cursor_onlyconsole(cx, y);  //x커서 한칸 오른쪽
+		}
+		set_cursor_onlyconsole(cx, ++y); //y커서 한칸 내리기
 	}
 }
