@@ -6,14 +6,18 @@
 
 int main() {
 	main_board *Pgame = new main_board();
-
+	Pgame->removeCursor();
 	Pgame->printboard();
 	getchar();
 	while (1)
 	{
-		if (!Pgame->is_block_falling())
+		
+		Pgame->block_created();
+		if (Pgame->is_gameover())
 		{
-			Pgame->block_created();
+			Sleep(100);
+			system("cls");
+			cout << "gameover";
 		}
 	}
 }
