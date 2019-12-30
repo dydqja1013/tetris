@@ -4,7 +4,6 @@
 #include<cstdio>
 
 
-
 int main() {
 	main_board *Pgame = new main_board();
 

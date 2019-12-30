@@ -14,5 +14,7 @@ public:
 	void createBlock();
 	void showBlock();
 	void removeBlock();
+	void cursor_clr();
+	bool isGround();
 };
 

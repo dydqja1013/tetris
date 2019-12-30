@@ -5,9 +5,10 @@
 #define DOWN 80 //soft drop
 #define MAIN_X 11 //게임판 가로크기 
 #define MAIN_Y 23 //게임판 세로크기 
+#define x_border
 class main_board {
 private:
-	bool blo[MAIN_Y][MAIN_X];
+	static bool blo[MAIN_Y][MAIN_X];
 	static int cursor_x;
 	static int cursor_y;
 	bool block_falling; //블럭이 내려가고있는지
@@ -21,4 +22,5 @@ public:
 	void set_cursor_onlyconsole(int, int);
 	int get_cursur_x();
 	int get_cursur_y();
+	bool is_nextblo_true(int,int);
 };
